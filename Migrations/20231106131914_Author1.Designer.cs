@@ -4,6 +4,7 @@ using Bud_George_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bud_George_Lab2.Migrations
 {
     [DbContext(typeof(Bud_George_Lab2Context))]
-    partial class Bud_George_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20231106131914_Author1")]
+    partial class Author1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -4,6 +4,7 @@ using Bud_George_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bud_George_Lab2.Migrations
 {
     [DbContext(typeof(Bud_George_Lab2Context))]
-    partial class Bud_George_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20231106131355_Author")]
+    partial class Author
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +53,7 @@ namespace Bud_George_Lab2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("AuthorID")
+                    b.Property<int?>("Author")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -67,8 +69,6 @@ namespace Bud_George_Lab2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AuthorID");
 
                     b.HasIndex("PublisherID");
 
@@ -93,15 +93,9 @@ namespace Bud_George_Lab2.Migrations
 
             modelBuilder.Entity("Bud_George_Lab2.Models.Book", b =>
                 {
-                    b.HasOne("Bud_George_Lab2.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorID");
-
                     b.HasOne("Bud_George_Lab2.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
-
-                    b.Navigation("Author");
 
                     b.Navigation("Publisher");
                 });
