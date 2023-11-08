@@ -36,7 +36,12 @@ namespace Bud_George_Lab2.Pages.Books
                 return NotFound();
             }
             Book = book;
-            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "FirstName", "LastName");
+            var authorlist = _context.Author.Select(x => new
+            {
+                x.ID,
+                FullName = x.LastName + " " + x.FirstName
+            });
+            ViewData["AuthorID"] = new SelectList(authorlist, "ID", "FullName");
             ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID","PublisherName");
             return Page();
         }
